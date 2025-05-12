@@ -34,21 +34,58 @@ def total_sales_by_product(data, product_key):
 def average_daily_sales(data, product_key):
     """Calculates the average daily sales of a specific product."""
     pass
+    total_sales = 0
+    for i in range(len(data)):
+        total_sales += sales_data[i][product_key]
+    average_sales = total_sales/len(data)
+    return average_sales
 
 
 def best_selling_day(data):
     """Finds the day with the highest total sales."""
     pass
+    sum_sales = 0
+    best_day = 0
+    
+    for i in range(len(data)):
+        if (sum_sales < data[i]["product_a"] + data[i]["product_b"] + data[i]["product_c"]):
+            sum_sales = data[i]["product_a"] + data[i]["product_b"] + data[i]["product_c"]
+            best_day = i
+    return data[best_day]["day"]
 
 
 def days_above_threshold(data, product_key, threshold):
     """Counts how many days the sales of a product exceeded a given threshold."""
     pass
+    num_days = 0
+    for i in range(len(data)):
+        if (threshold < data[i][product_key]):
+            num_days += 1
+    return num_days
 
 
 def top_product(data):
     """Determines which product had the highest total sales in 30 days."""
     pass
+    total_sales_a = 0
+    for i in range(len(data)):
+        total_sales_a += data[i]["product_a"]
+
+    total_sales_b = 0
+    for i in range(len(data)):
+        total_sales_b += data[i]["product_b"]
+    
+    total_sales_c = 0
+    for i in range(len(data)):
+        total_sales_c += data[i]["product_c"]
+    
+    if (total_sales_a < total_sales_b):
+        if (total_sales_b > total_sales_c):
+            return "product b"
+    elif (total_sales_a > total_sales_c):
+        return "product a"
+    else:
+        return "product c"
 
 
 
