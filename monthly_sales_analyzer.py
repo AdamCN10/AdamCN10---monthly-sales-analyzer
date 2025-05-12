@@ -25,6 +25,10 @@ sales_data = [
 def total_sales_by_product(data, product_key):
     """Calculates the total sales of a specific product in 30 days."""
     pass
+    total_sales = 0
+    for i in range(len(data)):
+        total_sales += data[i][product_key]
+    return total_sales
 
 
 def average_daily_sales(data, product_key):
